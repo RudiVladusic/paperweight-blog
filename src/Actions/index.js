@@ -24,9 +24,22 @@ export const deleteBlog = (id) => {
   };
 };
 
-export const updateBlog = (id, body) => {
+export const updateBlog = (id, currentBlog) => {
   return {
     type: "UPDATE_BLOG",
-    payload: { id: id, body: body },
+    payload: { id: id, currentBlog: currentBlog },
+  };
+};
+
+export const logIn = (userInfo) => {
+  return {
+    type: "LOG_IN",
+    payload: userInfo,
+  };
+};
+
+export const logOut = () => {
+  return {
+    type: "LOG_OUT",
   };
 };

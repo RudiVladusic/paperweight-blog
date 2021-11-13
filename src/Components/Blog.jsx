@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
+import { useState } from "react";
 import { deleteBlog, editing } from "../Actions";
 const Blog = ({ setCurrentBlog }) => {
   const dispatch = useDispatch();
@@ -9,8 +9,10 @@ const Blog = ({ setCurrentBlog }) => {
   const blogItem = useSelector((state) =>
     state.blogList.find((item) => item.id === Number(id))
   );
+  const isLogged = useSelector((state) => state.userInfo.isLoggedIn);
   let navigate = useNavigate();
-  console.log(id);
+  const [showModal, setShowModal] = useState(false);
+
   const { title, body } = blogItem;
   return (
     <main className="app-main">
@@ -25,8 +27,12 @@ const Blog = ({ setCurrentBlog }) => {
           <button
             className="button-default"
             onClick={() => {
-              dispatch(editing());
-              setCurrentBlog({ ...blogItem });
+              if (isLogged) {
+                dispatch(editing());
+                setCurrentBlog({ ...blogItem });
+                setShowModal(false);
+              }
+              setShowModal(true);
             }}
           >
             <abbr title={`Edit blog "${title}"`}>edit</abbr>
@@ -45,6 +51,14 @@ const Blog = ({ setCurrentBlog }) => {
             Go back
           </Link>
         </div>
+
+        {showModal ? (
+          <div className="you-must-log-in-first">
+            YOU MUST LOGIN FIRST! <Link to={"/login"}>Login</Link>
+          </div>
+        ) : (
+          ""
+        )}
       </article>
     </main>
   );

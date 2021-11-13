@@ -6,9 +6,9 @@ Front-end only.
 
 ## To do
 
-[] Login form
-[] Register form
-[] Login / Logout pages
-[] 404 page
-[] UI design / implementation
-[] Regular maintenance and refactoring of the code
+- [] Login form + logic
+- [] Register form + logic
+- [] Login / Logout pages
+- [] 404 page
+- [] UI design / implementation
+- [] Regular maintenance and refactoring of the code

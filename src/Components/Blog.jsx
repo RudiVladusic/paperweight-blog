@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { deleteBlog, editing } from "../Actions";
+import LoginModal from "./Presentational/LoginModal";
 const Blog = ({ setCurrentBlog }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -15,13 +16,13 @@ const Blog = ({ setCurrentBlog }) => {
 
   const { title, body } = blogItem;
   return (
-    <main className="app-main">
+    <main className="app-main single">
       <article className="app-main__blog">
         <header>
           <h2 className="app-heading">{title}</h2>
         </header>
         <div className="app-main__blog-content">
-          <p>{body}</p>
+          <pre>{body}</pre>
         </div>
         <div className="blog-snippet__buttons">
           <button
@@ -40,8 +41,12 @@ const Blog = ({ setCurrentBlog }) => {
           <button
             className="button-default delete"
             onClick={() => {
-              dispatch(deleteBlog(Number(id)));
-              navigate("/");
+              if (isLogged) {
+                dispatch(deleteBlog(Number(id)));
+                navigate("/");
+                setShowModal(false);
+              }
+              setShowModal(true);
             }}
           >
             <abbr title={`Delete blog "${title}"`}>delete</abbr>
@@ -52,13 +57,7 @@ const Blog = ({ setCurrentBlog }) => {
           </Link>
         </div>
 
-        {showModal ? (
-          <div className="you-must-log-in-first">
-            YOU MUST LOGIN FIRST! <Link to={"/login"}>Login</Link>
-          </div>
-        ) : (
-          ""
-        )}
+        {showModal ? <LoginModal /> : ""}
       </article>
     </main>
   );

@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addNewBlog } from "../Actions";
+import { useNavigate } from "react-router";
+import LoginModal from "./Presentational/LoginModal";
 const Form = () => {
   const [blog, setBlog] = useState({
     title: "",
@@ -8,54 +10,66 @@ const Form = () => {
     body: "",
     id: "",
   });
-
+  const navigate = useNavigate();
+  const isUserLogged = useSelector((state) => state.userInfo.isLoggedIn);
   const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addNewBlog(blog));
-    setBlog({ title: "", summary: "", body: "", id: "" });
+    if (isUserLogged) {
+      dispatch(addNewBlog(blog));
+      setBlog({ title: "", summary: "", body: "", id: "" });
+      navigate("/");
+    }
   };
 
   return (
-    <div className="form-wrapper">
-      <form className="app-form" onSubmit={handleSubmit}>
-        <label htmlFor="Title">Title:</label>
-        <input
-          onChange={(e) => {
-            setBlog({ ...blog, title: e.target.value, id: Date.now() });
-          }}
-          type="text"
-          name="title"
-          id="title"
-          required={true}
-          value={blog.title}
-        />
-        <label htmlFor="Summary">Summary:</label>
-        <input
-          type="text"
-          name="summary"
-          id="summary"
-          placeholder="enter here"
-          onChange={(e) => {
-            setBlog({ ...blog, summary: e.target.value });
-          }}
-        />
-        <label htmlFor="Body">Content:</label>
-        <textarea
-          name="body"
-          id="body"
-          cols="30"
-          rows="10"
-          placeholder="Write here"
-          required={true}
-          onChange={(e) => {
-            setBlog({ ...blog, body: e.target.value });
-          }}
-          value={blog.body}
-        ></textarea>
-        <button className="button-default submit">Submit</button>
-      </form>
-    </div>
+    <main className="app-main">
+      {isUserLogged ? (
+        <div className="form-wrapper">
+          <form className="app-form" onSubmit={handleSubmit}>
+            <label htmlFor="Title">Title:</label>
+            <input
+              onChange={(e) => {
+                setBlog({ ...blog, title: e.target.value, id: Date.now() });
+              }}
+              type="text"
+              name="title"
+              id="title"
+              required={true}
+              value={blog.title}
+              placeholder="Enter title"
+            />
+            <label htmlFor="Summary">Summary:</label>
+            <input
+              type="text"
+              name="summary"
+              id="summary"
+              placeholder="Enter summary"
+              onChange={(e) => {
+                setBlog({ ...blog, summary: e.target.value });
+              }}
+            />
+            <label htmlFor="Body">Content:</label>
+            <textarea
+              name="body"
+              id="body"
+              cols="30"
+              rows="10"
+              placeholder="Enter content"
+              required={true}
+              onChange={(e) => {
+                setBlog({ ...blog, body: e.target.value });
+              }}
+              value={blog.body}
+            ></textarea>
+            <button className="button-default submit">Submit</button>
+          </form>
+        </div>
+      ) : (
+        <LoginModal />
+      )}
+    </main>
   );
 };
 

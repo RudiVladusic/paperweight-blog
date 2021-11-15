@@ -6,17 +6,19 @@ const BlogList = ({ setCurrentBlog }) => {
 
   return (
     <main className="app-main">
-      {allBlogs && allBlogs.length > 0 ? (
-        allBlogs.map((singleBlog) => (
-          <BlogSnippet
-            key={singleBlog.id}
-            singleBlog={singleBlog}
-            setCurrentBlog={setCurrentBlog}
-          />
-        ))
-      ) : (
-        <h2>No blogs, write one!</h2>
-      )}
+      <section className="blog-list-home">
+        {allBlogs && allBlogs.length > 0 ? (
+          allBlogs.map((singleBlog) => (
+            <BlogSnippet
+              key={singleBlog.id}
+              singleBlog={singleBlog}
+              setCurrentBlog={setCurrentBlog}
+            />
+          ))
+        ) : (
+          <h2>No blogs, write one!</h2>
+        )}
+      </section>
     </main>
   );
 };

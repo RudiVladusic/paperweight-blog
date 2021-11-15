@@ -6,6 +6,9 @@ import Loading from "./Components/Presentational/Loading";
 import AddNewBlog from "./Components/AddNewBlog";
 import BlogList from "./Components/BlogList";
 import Login from "./Components/Login";
+import NavBar from "./Components/NavBar";
+import About from "./Components/Presentational/About";
+import Footer from "./Components/Presentational/Footer";
 
 const EditFormComponent = React.lazy(() => import("./Components/EditForm"));
 const BlogDetailsComponent = React.lazy(() => import("./Components/Blog"));
@@ -16,20 +19,21 @@ function App() {
 
   return (
     <Router>
+      <NavBar />
       <Routes>
         <Route
           exact
           path="/"
           element={
-            <>
-              <AddNewBlog />
-              <BlogList
-                currentBlog={currentBlog}
-                setCurrentBlog={setCurrentBlog}
-              />
-            </>
+            <BlogList
+              currentBlog={currentBlog}
+              setCurrentBlog={setCurrentBlog}
+            />
           }
         />
+
+        <Route exact path="/about" element={<About />} />
+        <Route exact path="/create" element={<AddNewBlog />} />
 
         <Route
           exact
@@ -52,6 +56,7 @@ function App() {
         />
         <Route exact path="/login" element={<Login />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

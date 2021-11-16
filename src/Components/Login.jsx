@@ -15,7 +15,7 @@ const Login = () => {
   return (
     <main className="app-main">
       {isUserLogged ? (
-        <Navigate to="/" />
+        <Navigate to={-1} />
       ) : (
         <form
           onSubmit={(e) => {

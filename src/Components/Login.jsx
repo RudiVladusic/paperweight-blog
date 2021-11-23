@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate } from "react-router";
+import { Link } from "react-router-dom";
 import { logIn } from "../Actions";
+import FormErrorModal from "./Presentational/FormErrorModal";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -17,36 +19,59 @@ const Login = () => {
       {isUserLogged ? (
         <Navigate to={-1} />
       ) : (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            dispatch(logIn(loginData));
-            setLoginData({ username: "", password: "" });
-          }}
-        >
-          <label htmlFor="password">Username:</label>
-          <input
-            type="text"
-            onChange={(e) => {
-              setLoginData({ ...loginData, username: e.target.value });
+        <div className="form-wrapper login">
+          <form
+            className="login-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              dispatch(logIn(loginData));
+              setLoginData({ username: "", password: "" });
             }}
-            value={loginData.username}
-            name="username"
-            id="username"
-          />
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={loginData.password}
-            onChange={(e) => {
-              setLoginData({ ...loginData, password: e.target.value });
-            }}
-          />
-          <button type="submit">Submit</button>
-          {isError ? <h2 style={{ color: "white" }}>WRONG!!!</h2> : ""}
-        </form>
+          >
+            <div className="form-wrapper__group">
+              <label htmlFor="login">Login</label>
+              {isError ? (
+                <FormErrorModal message={`Wrong username or password`} />
+              ) : null}
+            </div>
+            <div className="form-wrapper__group">
+              <label htmlFor="password">Username:</label>
+              <input
+                required={true}
+                type="text"
+                onChange={(e) => {
+                  setLoginData({ ...loginData, username: e.target.value });
+                }}
+                value={loginData.username}
+                name="username"
+                id="username"
+                placeholder="Enter username"
+              />
+            </div>
+            <div className="form-wrapper__group">
+              <label htmlFor="password">Password:</label>
+              <input
+                required={true}
+                type="password"
+                name="password"
+                id="password"
+                value={loginData.password}
+                onChange={(e) => {
+                  setLoginData({ ...loginData, password: e.target.value });
+                }}
+                placeholder="Enter password"
+              />
+            </div>
+
+            <button type="submit">Login</button>
+          </form>
+
+          <div className="account-modal">
+            <p>
+              Don't have a account? <Link to="/register">Sign up</Link>
+            </p>
+          </div>
+        </div>
       )}
     </main>
   );

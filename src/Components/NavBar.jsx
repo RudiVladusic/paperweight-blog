@@ -4,6 +4,7 @@ import { logOut } from "../Actions";
 
 const NavBar = () => {
   const isUserLogged = useSelector((state) => state.userInfo.isLoggedIn);
+  const username = useSelector((state) => state.userInfo.info.username);
   const dispatch = useDispatch();
 
   return (
@@ -21,9 +22,9 @@ const NavBar = () => {
           <Link to="/create">Create new</Link>
           <Link
             to={isUserLogged ? "/" : "/login"}
-            onClick={() => (isUserLogged ? dispatch(logOut) : "")}
+            onClick={() => (isUserLogged ? dispatch(logOut()) : "")}
           >
-            {isUserLogged ? `Log out` : `Log in`}
+            {isUserLogged ? `Log out (${username})` : `Log in`}
           </Link>
         </div>
 

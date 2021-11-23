@@ -1,30 +1,17 @@
+import { saveToLocalStorage } from "../Functions/saveToLocalStorage";
+import validate from "../Functions/validate";
+const checkLocalStorageForUser = JSON.parse(localStorage.getItem("user"));
 const initialState = {
   isLoggedIn: false,
   isError: false,
-  info: {
-    username: "admin",
-    password: "admin123",
+
+  info: checkLocalStorageForUser || {
+    username: undefined,
+    password: undefined,
   },
 };
 
 const userInfoReducer = (state = initialState, action) => {
-  const validate = (account, loginInfo) => {
-    const keys1 = Object.keys(account);
-    const keys2 = Object.keys(loginInfo);
-
-    if (keys1.length !== keys2.length) {
-      return false;
-    }
-
-    for (let key of keys1) {
-      if (account[key] !== loginInfo[key]) {
-        return false;
-      }
-    }
-
-    return true;
-  };
-
   switch (action.type) {
     case "LOG_IN":
       const checkLoginInfo = validate(state.info, action.payload);
@@ -35,7 +22,18 @@ const userInfoReducer = (state = initialState, action) => {
         isError: checkErrorStatus,
       };
     case "LOG_OUT":
-      return (state = false);
+      return {
+        ...state,
+        isLoggedIn: false,
+        isError: false,
+      };
+
+    case "REGISTER_USER":
+      saveToLocalStorage("user", action.payload);
+      return {
+        ...state,
+        info: action.payload,
+      };
     default:
       return state;
   }

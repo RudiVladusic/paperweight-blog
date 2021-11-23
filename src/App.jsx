@@ -9,12 +9,13 @@ import Login from "./Components/Login";
 import NavBar from "./Components/NavBar";
 import About from "./Components/Presentational/About";
 import Footer from "./Components/Presentational/Footer";
+import SignUp from "./Components/SignUp";
 
 const EditFormComponent = React.lazy(() => import("./Components/EditForm"));
 const BlogDetailsComponent = React.lazy(() => import("./Components/Blog"));
 function App() {
   const isEditing = useSelector((state) => state.isEditing);
-  // const isLogged = useSelector((state) => state.userInfo.isLoggedIn);
+  const isLogged = useSelector((state) => state.userInfo.isLoggedIn);
   const [currentBlog, setCurrentBlog] = useState({});
 
   return (
@@ -40,7 +41,7 @@ function App() {
           path="/:id"
           element={
             <Suspense fallback={<Loading />}>
-              {isEditing ? (
+              {isEditing && isLogged ? (
                 <EditFormComponent
                   currentBlog={currentBlog}
                   setCurrentBlog={setCurrentBlog}
@@ -55,6 +56,7 @@ function App() {
           }
         />
         <Route exact path="/login" element={<Login />} />
+        <Route exact path="/register" element={<SignUp />} />
       </Routes>
       <Footer />
     </Router>

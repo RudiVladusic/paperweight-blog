@@ -1,3 +1,4 @@
+// VARIABLES
 $--black-coffee: #302621ff;
 $--gold-crayola: #ebc79eff;
 $--queen-blue: #48639cff;
@@ -5,6 +6,7 @@ $--fire-engine-red: #c1292eff;
 $--text-white: #fff;
 $--text-black: #202020;
 $--baseline-width: clamp(50vw, 100em, 95vw);
+$--form-width: clamp(20vw, 40em, 95vw);
 
 *,
 ::before,
@@ -116,7 +118,6 @@ input,
 label,
 textarea {
   display: block;
-  margin: 1em 0;
 }
 
 label {
@@ -125,9 +126,8 @@ label {
 
 textarea {
   resize: none;
-
   width: $--baseline-width;
-
+  width: 100%;
   font-family: inherit;
   background: $--queen-blue;
   outline: none;
@@ -142,13 +142,6 @@ textarea {
   }
 }
 
-input {
-  width: $--baseline-width;
-  padding: 0.75em 0.5em;
-  font-family: inherit;
-  font-size: inherit;
-}
-
 abbr {
   text-decoration: none;
 }
@@ -161,10 +154,71 @@ abbr {
 }
 
 .form-wrapper {
-  display: grid;
-  gap: 1em;
-  place-items: center;
+  margin: auto;
   position: relative;
+  background: $--queen-blue;
+  width: $--form-width;
+  border-radius: 0.25em;
+  padding: 0.5em;
+  box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
+}
+
+.login-form {
+  display: grid;
+  gap: 2em;
+
+  label {
+    margin: 0.5em 0;
+  }
+
+  input {
+    border-radius: 0.25em;
+    border: none;
+    box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
+    background: $--text-white;
+    color: $--text-black;
+    padding: 0.75em 0.5em;
+    font-family: inherit;
+    font-size: inherit;
+    width: 100%;
+    &:focus {
+      outline: 0.15em solid $--fire-engine-red;
+    }
+  }
+
+  button {
+    place-self: end;
+    padding: 0.5em 0.75em;
+    border: none;
+    border-radius: 0.25em;
+    outline: none;
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+    color: $--text-black;
+    background: $--gold-crayola;
+    box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.4);
+  }
+}
+
+.login-error-modal {
+  h2 {
+    font-weight: 300;
+    color: $--text-white;
+    text-decoration: underline 0.1em solid $--fire-engine-red;
+    text-underline-offset: 0.3em;
+  }
+}
+
+.account-modal {
+  color: $--text-white;
+  a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    text-decoration: underline $--fire-engine-red;
+    text-underline-offset: 0.3em;
+  }
 }
 
 .button-default {
@@ -203,6 +257,23 @@ abbr {
   margin: auto;
   min-height: calc(100vh + 5em);
   padding: 5em 0;
+  animation: fade-in 0.5s ease-in-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.add-new-blog {
+  display: grid;
+  place-items: center;
+  min-height: 50vh;
 }
 
 .login-modal {

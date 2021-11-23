@@ -1,19 +1,16 @@
-const defaultState = JSON.parse(localStorage.getItem("blog-list"));
-
+import { saveToLocalStorage } from "../Functions/saveToLocalStorage";
+const blogKeyString = "blog-list";
+const defaultState = JSON.parse(localStorage.getItem(blogKeyString));
 const blogReducer = (state = defaultState || [], action) => {
-  const saveToLocalStorage = (blogList) => {
-    localStorage.setItem("blog-list", JSON.stringify(blogList));
-  };
-
   switch (action.type) {
     case "ADD_NEW":
       const addSingleBlog = [...state, action.payload];
-      saveToLocalStorage(addSingleBlog);
+      saveToLocalStorage(blogKeyString, addSingleBlog);
       return addSingleBlog;
 
     case "DELETE_BLOG":
       const deleteSingleBlog = state.filter((ide) => ide.id !== action.payload);
-      saveToLocalStorage(deleteSingleBlog);
+      saveToLocalStorage(blogKeyString, deleteSingleBlog);
       return deleteSingleBlog;
 
     case "UPDATE_BLOG":
@@ -22,7 +19,7 @@ const blogReducer = (state = defaultState || [], action) => {
           ? (item = action.payload.currentBlog)
           : item;
       });
-      saveToLocalStorage(updateSingleBlog);
+      saveToLocalStorage(blogKeyString, updateSingleBlog);
       return updateSingleBlog;
     default:
       return state;

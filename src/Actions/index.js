@@ -43,3 +43,10 @@ export const logOut = () => {
     type: "LOG_OUT",
   };
 };
+
+export const registerUser = (registerInfo) => {
+  return {
+    type: "REGISTER_USER",
+    payload: registerInfo,
+  };
+};

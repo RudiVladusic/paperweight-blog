@@ -132,7 +132,6 @@ input,
 label,
 textarea {
   display: block;
-  margin: 1em 0;
 }
 
 label {
@@ -142,6 +141,7 @@ label {
 textarea {
   resize: none;
   width: clamp(50vw, 100em, 95vw);
+  width: 100%;
   font-family: inherit;
   background: #48639cff;
   outline: none;
@@ -171,13 +171,6 @@ textarea::placeholder {
   opacity: 1;
 }
 
-input {
-  width: clamp(50vw, 100em, 95vw);
-  padding: 0.75em 0.5em;
-  font-family: inherit;
-  font-size: inherit;
-}
-
 abbr {
   text-decoration: none;
 }
@@ -188,11 +181,77 @@ abbr {
 }
 
 .form-wrapper {
+  margin: auto;
+  position: relative;
+  background: #48639cff;
+  width: clamp(20vw, 40em, 95vw);
+  border-radius: 0.25em;
+  padding: 0.5em;
+  -webkit-box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
+          box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
+}
+
+.login-form {
   display: -ms-grid;
   display: grid;
-  gap: 1em;
-  place-items: center;
-  position: relative;
+  gap: 2em;
+}
+
+.login-form label {
+  margin: 0.5em 0;
+}
+
+.login-form input {
+  border-radius: 0.25em;
+  border: none;
+  -webkit-box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
+          box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
+  background: #fff;
+  color: #202020;
+  padding: 0.75em 0.5em;
+  font-family: inherit;
+  font-size: inherit;
+  width: 100%;
+}
+
+.login-form input:focus {
+  outline: 0.15em solid #c1292eff;
+}
+
+.login-form button {
+  place-self: end;
+  padding: 0.5em 0.75em;
+  border: none;
+  border-radius: 0.25em;
+  outline: none;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  color: #202020;
+  background: #ebc79eff;
+  -webkit-box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.4);
+          box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.4);
+}
+
+.login-error-modal h2 {
+  font-weight: 300;
+  color: #fff;
+  -webkit-text-decoration: underline 0.1em solid #c1292eff;
+          text-decoration: underline 0.1em solid #c1292eff;
+  text-underline-offset: 0.3em;
+}
+
+.account-modal {
+  color: #fff;
+}
+
+.account-modal a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  -webkit-text-decoration: underline #c1292eff;
+          text-decoration: underline #c1292eff;
+  text-underline-offset: 0.3em;
 }
 
 .button-default {
@@ -231,6 +290,33 @@ abbr {
   margin: auto;
   min-height: calc(100vh + 5em);
   padding: 5em 0;
+  -webkit-animation: fade-in 0.5s ease-in-out;
+          animation: fade-in 0.5s ease-in-out;
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.add-new-blog {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  min-height: 50vh;
 }
 
 .login-modal {

@@ -25,50 +25,52 @@ const Form = () => {
 
   return (
     <main className="app-main">
-      {isUserLogged ? (
-        <div className="form-wrapper">
-          <form className="app-form" onSubmit={handleSubmit}>
-            <label htmlFor="Title">Title:</label>
-            <input
-              onChange={(e) => {
-                setBlog({ ...blog, title: e.target.value, id: Date.now() });
-              }}
-              type="text"
-              name="title"
-              id="title"
-              required={true}
-              value={blog.title}
-              placeholder="Enter title"
-            />
-            <label htmlFor="Summary">Summary:</label>
-            <input
-              type="text"
-              name="summary"
-              id="summary"
-              placeholder="Enter summary"
-              onChange={(e) => {
-                setBlog({ ...blog, summary: e.target.value });
-              }}
-            />
-            <label htmlFor="Body">Content:</label>
-            <textarea
-              name="body"
-              id="body"
-              cols="30"
-              rows="10"
-              placeholder="Enter content"
-              required={true}
-              onChange={(e) => {
-                setBlog({ ...blog, body: e.target.value });
-              }}
-              value={blog.body}
-            ></textarea>
-            <button className="button-default submit">Submit</button>
-          </form>
-        </div>
-      ) : (
-        <LoginModal />
-      )}
+      <section className="add-new-blog">
+        {isUserLogged ? (
+          <div className="form-wrapper">
+            <form className="app-form" onSubmit={handleSubmit}>
+              <label htmlFor="Title">Title:</label>
+              <input
+                onChange={(e) => {
+                  setBlog({ ...blog, title: e.target.value, id: Date.now() });
+                }}
+                type="text"
+                name="title"
+                id="title"
+                required={true}
+                value={blog.title}
+                placeholder="Enter title"
+              />
+              <label htmlFor="Summary">Summary:</label>
+              <input
+                type="text"
+                name="summary"
+                id="summary"
+                placeholder="Enter summary"
+                onChange={(e) => {
+                  setBlog({ ...blog, summary: e.target.value });
+                }}
+              />
+              <label htmlFor="Body">Content:</label>
+              <textarea
+                name="body"
+                id="body"
+                cols="30"
+                rows="10"
+                placeholder="Enter content"
+                required={true}
+                onChange={(e) => {
+                  setBlog({ ...blog, body: e.target.value });
+                }}
+                value={blog.body}
+              ></textarea>
+              <button className="button-default submit">Submit</button>
+            </form>
+          </div>
+        ) : (
+          <LoginModal />
+        )}
+      </section>
     </main>
   );
 };

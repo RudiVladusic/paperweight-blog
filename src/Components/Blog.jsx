@@ -22,7 +22,7 @@ const Blog = ({ setCurrentBlog }) => {
           <h2 className="app-heading">{title}</h2>
         </header>
         <div className="app-main__blog-content">
-          <pre>{body}</pre>
+          <pre>{body.trim()}</pre>
         </div>
         <div className="blog-snippet__buttons">
           <button

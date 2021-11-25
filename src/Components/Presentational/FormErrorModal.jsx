@@ -1,6 +1,6 @@
 const FormErrorModal = ({ message }) => {
   return (
-    <header className="login-error-modal">
+    <header className="form-error-modal">
       <h2>{message}</h2>
     </header>
   );

@@ -4,13 +4,12 @@ import { useNavigate } from "react-router";
 const EditForm = ({ currentBlog, setCurrentBlog }) => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  console.log(currentBlog.id);
+
   return (
     <main className="app-main">
       <div className="form-wrapper">
-        <label htmlFor="Edit">Editing {currentBlog.title}</label>
         <form
-          className="app-form"
+          className="login-form"
           onSubmit={(e) => {
             e.preventDefault();
             dispatch(notEditing());
@@ -19,47 +18,56 @@ const EditForm = ({ currentBlog, setCurrentBlog }) => {
             navigate("/");
           }}
         >
-          <label htmlFor="Title">Title:</label>
-          <input
-            onChange={(e) => {
-              setCurrentBlog({
-                ...currentBlog,
-                title: e.target.value,
-              });
-            }}
-            type="text"
-            name="title"
-            id="title"
-            required={true}
-            value={currentBlog.title}
-          />
-          <label htmlFor="Summary">Summary:</label>
-          <input
-            type="text"
-            name="summary"
-            id="summary"
-            placeholder="enter here"
-            value={currentBlog.summary}
-            onChange={(e) => {
-              setCurrentBlog({ ...currentBlog, summary: e.target.value });
-            }}
-          />
-
-          <label htmlFor="Body">Content:</label>
-          <textarea
-            name="body"
-            id="body"
-            cols="30"
-            rows="10"
-            placeholder="write here"
-            value={currentBlog.body}
-            onChange={(e) => {
-              setCurrentBlog({ ...currentBlog, body: e.target.value });
-            }}
-          ></textarea>
-
-          <button className="button-default">Submit</button>
-          <button className="button-default">cancel</button>
+          <div className="form-wrapper__group">
+            <label htmlFor="Edit">Editing {currentBlog.title}</label>
+          </div>
+          <div className="form-wrapper__group">
+            <label htmlFor="Title">Title:</label>
+            <input
+              onChange={(e) => {
+                setCurrentBlog({
+                  ...currentBlog,
+                  title: e.target.value,
+                });
+              }}
+              type="text"
+              name="title"
+              id="title"
+              required={true}
+              value={currentBlog.title}
+            />
+          </div>
+          <div className="form-wrapper__group">
+            <label htmlFor="Summary">Summary:</label>
+            <input
+              type="text"
+              name="summary"
+              id="summary"
+              placeholder="enter here"
+              value={currentBlog.summary}
+              onChange={(e) => {
+                setCurrentBlog({ ...currentBlog, summary: e.target.value });
+              }}
+            />
+          </div>
+          <div className="form-wrapper__group">
+            <label htmlFor="Body">Content:</label>
+            <textarea
+              name="body"
+              id="body"
+              cols="30"
+              rows="10"
+              placeholder="write here"
+              value={currentBlog.body}
+              onChange={(e) => {
+                setCurrentBlog({ ...currentBlog, body: e.target.value });
+              }}
+            ></textarea>
+          </div>
+          <div className="form-wrapper__group buttons">
+            <button className="button-default cancel">cancel</button>
+            <button className="button-default">Submit</button>
+          </div>
         </form>
       </div>
     </main>

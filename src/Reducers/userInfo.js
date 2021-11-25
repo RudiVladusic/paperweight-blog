@@ -30,8 +30,11 @@ const userInfoReducer = (state = initialState, action) => {
 
     case "REGISTER_USER":
       saveToLocalStorage("user", action.payload);
+
       return {
         ...state,
+        isLoggedIn: true,
+        isError: false,
         info: action.payload,
       };
     default:

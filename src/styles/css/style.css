@@ -1,110 +1,3 @@
-*,
-::before,
-::after {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-html {
-  font-family: "Source Sans Pro", sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  scroll-behavior: smooth;
-  -ms-touch-action: manipulation;
-      touch-action: manipulation;
-  line-height: 1.5;
-  background: #302621ff;
-  scrollbar-width: thin;
-  scrollbar-color: #48639cff #302621ff;
-}
-
-pre {
-  font-family: inherit;
-  font-size: inherit;
-  max-width: 100ch;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  color: #fff;
-  letter-spacing: 0.05em;
-}
-
-.app-heading {
-  color: #ebc79eff;
-  letter-spacing: 0.1em;
-  font-family: "Playfair Display", serif;
-}
-
-.navigation {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  place-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 0 auto;
-  padding: 0.5em 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background: black;
-}
-
-.navigation .navigation-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  place-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: clamp(50vw, 100em, 95vw);
-}
-
-.navigation .navigation-logo {
-  font-family: "Playfair Display", serif;
-  color: #ebc79eff;
-  letter-spacing: 0.05em;
-}
-
-.navigation .navigation-desktop {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 1em;
-}
-
-.navigation .navigation-desktop a {
-  text-decoration: none;
-  text-transform: lowercase;
-  cursor: pointer;
-  color: #fff;
-}
-
-.navigation .navigation-mobile {
-  display: none;
-}
-
-.navigation .burger {
-  display: none;
-}
-
-.loading-component {
-  width: clamp(3em, 50vw, 50em);
-  height: clamp(3em, 50vw, 30em);
-  border: 0.15em solid;
-  border-radius: 50%;
-  border-top: 0.5em solid;
-  border-color: #ebc79eff transparent;
-  -webkit-animation: spin 1s linear infinite;
-          animation: spin 1s linear infinite;
-}
-
 @-webkit-keyframes spin {
   from {
     -webkit-transform: rotate(0deg);
@@ -127,171 +20,16 @@ pre {
   }
 }
 
-form,
-input,
-label,
-textarea {
-  display: block;
+@-webkit-keyframes underline {
+  to {
+    width: 100%;
+  }
 }
 
-label {
-  color: #ebc79eff;
-}
-
-textarea {
-  resize: none;
-  width: clamp(50vw, 100em, 95vw);
-  width: 100%;
-  font-family: inherit;
-  background: #48639cff;
-  outline: none;
-  border-radius: 0.25em;
-  border: 0.15em solid #48639cff;
-  padding: 0.75em 0.5em;
-  color: #fff;
-}
-
-textarea::-webkit-input-placeholder {
-  color: #fff;
-  opacity: 1;
-}
-
-textarea:-ms-input-placeholder {
-  color: #fff;
-  opacity: 1;
-}
-
-textarea::-ms-input-placeholder {
-  color: #fff;
-  opacity: 1;
-}
-
-textarea::placeholder {
-  color: #fff;
-  opacity: 1;
-}
-
-abbr {
-  text-decoration: none;
-}
-
-.navigation-home a {
-  color: #ebc79eff;
-  text-decoration: none;
-}
-
-.form-wrapper {
-  margin: auto;
-  position: relative;
-  background: #48639cff;
-  width: clamp(20vw, 40em, 95vw);
-  border-radius: 0.25em;
-  padding: 0.5em;
-  -webkit-box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
-          box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
-}
-
-.login-form {
-  display: -ms-grid;
-  display: grid;
-  gap: 2em;
-}
-
-.login-form label {
-  margin: 0.5em 0;
-}
-
-.login-form input {
-  border-radius: 0.25em;
-  border: none;
-  -webkit-box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
-          box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
-  background: #fff;
-  color: #202020;
-  padding: 0.75em 0.5em;
-  font-family: inherit;
-  font-size: inherit;
-  width: 100%;
-}
-
-.login-form input:focus {
-  outline: 0.15em solid #c1292eff;
-}
-
-.login-form button {
-  place-self: end;
-  padding: 0.5em 0.75em;
-  border: none;
-  border-radius: 0.25em;
-  outline: none;
-  cursor: pointer;
-  font-size: inherit;
-  font-family: inherit;
-  color: #202020;
-  background: #ebc79eff;
-  -webkit-box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.4);
-          box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.4);
-}
-
-.login-error-modal h2 {
-  font-weight: 300;
-  color: #fff;
-  -webkit-text-decoration: underline 0.1em solid #c1292eff;
-          text-decoration: underline 0.1em solid #c1292eff;
-  text-underline-offset: 0.3em;
-}
-
-.account-modal {
-  color: #fff;
-}
-
-.account-modal a {
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-  -webkit-text-decoration: underline #c1292eff;
-          text-decoration: underline #c1292eff;
-  text-underline-offset: 0.3em;
-}
-
-.button-default {
-  outline: none;
-  background: transparent;
-  text-transform: lowercase;
-  padding: 0.5em 0.75em;
-  border-radius: 0.25em;
-  background: transparent;
-  font-size: inherit;
-  font-family: inherit;
-  cursor: pointer;
-  color: #fff;
-  border: 0.1em solid #ebc79eff;
-  text-decoration: none;
-}
-
-.delete {
-  background: #c1292eff;
-}
-
-.details {
-  text-align: center;
-  background: rgba(235, 199, 158, 0.15);
-  border: none;
-  text-underline-offset: 0.1em;
-}
-
-.submit {
-  background: #48639cff;
-  border: none;
-}
-
-.app-main {
-  width: clamp(50vw, 100em, 95vw);
-  margin: auto;
-  min-height: calc(100vh + 5em);
-  padding: 5em 0;
-  -webkit-animation: fade-in 0.5s ease-in-out;
-          animation: fade-in 0.5s ease-in-out;
+@keyframes underline {
+  to {
+    width: 100%;
+  }
 }
 
 @-webkit-keyframes fade-in {
@@ -312,6 +50,349 @@ abbr {
   }
 }
 
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: thin;
+  scrollbar-color: #f0544f #202020;
+}
+
+html {
+  font-family: "Source Sans Pro", sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  scroll-behavior: smooth;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  line-height: 1.5;
+  background: #fff;
+}
+
+pre {
+  font-family: inherit;
+  font-size: inherit;
+  max-width: 100ch;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: clamp(1rem, 1vw, 2rem);
+  color: #071108;
+}
+
+.app-heading {
+  color: #f0544f;
+  font-family: "Playfair Display", serif;
+}
+
+.navigation {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+  padding: 0.5em 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: #071108;
+}
+
+.navigation .navigation-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: clamp(50vw, 100em, 95vw);
+}
+
+.navigation .navigation-logo {
+  font-family: "Playfair Display", serif;
+  color: #f0544f;
+}
+
+.navigation .navigation-desktop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1em;
+}
+
+@media (max-width: 768px) {
+  .navigation .navigation-desktop {
+    display: none;
+  }
+}
+
+.navigation .navigation-desktop .navigation-desktop__link {
+  text-decoration: none;
+  text-transform: lowercase;
+  cursor: pointer;
+  color: #fff;
+}
+
+.navigation .navigation-desktop .login {
+  border: 0.1em solid #f0544f;
+}
+
+.navigation .navigation-mobile {
+  display: none;
+  gap: 1em;
+  background: #fff;
+  background: #071108;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  place-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.navigation .burger {
+  display: none;
+  z-index: 4;
+  gap: 0.25em;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.navigation .burger .bar {
+  width: 2.5em;
+  height: 0.25em;
+  background: #fff;
+}
+
+@media (max-width: 768px) {
+  .navigation .burger {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.navigation .open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.navigation .burger-open .bar {
+  background: #071108;
+}
+
+form,
+input,
+label,
+textarea {
+  display: block;
+}
+
+label {
+  color: #f0544f;
+}
+
+abbr {
+  text-decoration: none;
+}
+
+.navigation-home a {
+  color: #f0544f;
+  text-decoration: none;
+}
+
+.form-wrapper {
+  margin: auto;
+  position: relative;
+  background: #f2e5d7;
+  width: clamp(20vw, 40em, 95vw);
+  border-radius: 0.5em;
+  padding: 0.5em;
+  -webkit-box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
+          box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
+}
+
+.login-form {
+  display: -ms-grid;
+  display: grid;
+  gap: 2em;
+}
+
+.login-form label {
+  margin: 0.5em 0;
+  text-transform: capitalize;
+}
+
+.login-form input {
+  border-radius: 0.15em;
+  border: none;
+  -webkit-box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
+          box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
+  background: #345995;
+  color: #fff;
+  padding: 0.75em 0.5em;
+  font-family: inherit;
+  font-size: inherit;
+  width: 100%;
+}
+
+.login-form input:focus {
+  outline: 0.15em solid #f0544f;
+}
+
+.login-form button {
+  place-self: end;
+  padding: 0.5em 0.75em;
+  border: none;
+  border-radius: 0.15em;
+  outline: none;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  color: #fff;
+  background: #f0544f;
+  -webkit-box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.4);
+          box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.4);
+}
+
+.login-form textarea {
+  resize: none;
+  width: clamp(50vw, 100em, 95vw);
+  width: 100%;
+  font-family: inherit;
+  background: #345995;
+  outline: none;
+  border-radius: 0.15em;
+  border: 0.15em solid #f0544f;
+  padding: 0.75em 0.5em;
+  color: #fff;
+}
+
+.login-form textarea::-webkit-input-placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+.login-form textarea:-ms-input-placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+.login-form textarea::-ms-input-placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+.login-form textarea::placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+.buttons {
+  place-self: end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1em;
+}
+
+.form-error-modal h2 {
+  font-weight: 300;
+  color: #202020;
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.form-error-modal h2::before {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  content: "";
+  height: 0.1em;
+  background: #f0544f;
+  -webkit-animation: underline 0.5s ease-in-out forwards 0.25s;
+          animation: underline 0.5s ease-in-out forwards 0.25s;
+}
+
+.account-modal {
+  color: #202020;
+}
+
+.account-modal a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  -webkit-text-decoration: underline #f0544f;
+          text-decoration: underline #f0544f;
+  text-underline-offset: 0.3em;
+}
+
+.button-default {
+  outline: none;
+  background: transparent;
+  text-transform: lowercase;
+  padding: 0.5em 0.75em;
+  border-radius: 0.25em;
+  background: transparent;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  color: #fff;
+  border: 0.1em solid #f0544f;
+  text-decoration: none;
+}
+
+.delete {
+  background: #f0544f;
+}
+
+.details {
+  text-align: center;
+  background: #99110d;
+  border: none;
+  text-underline-offset: 0.1em;
+}
+
+.submit {
+  background: #48639cff;
+  border: none;
+}
+
+.cancel {
+  background: transparent;
+}
+
+.app-main {
+  width: clamp(50vw, 100em, 95vw);
+  margin: auto;
+  min-height: calc(100vh + 5em);
+  padding: 5em 0;
+  -webkit-animation: fade-in 0.5s ease-in-out;
+          animation: fade-in 0.5s ease-in-out;
+}
+
 .add-new-blog {
   display: -ms-grid;
   display: grid;
@@ -321,7 +402,7 @@ abbr {
 
 .login-modal {
   text-align: center;
-  color: #fff;
+  color: #202020;
 }
 
 .login-modal a {
@@ -341,13 +422,12 @@ abbr {
 
 .about header {
   text-align: center;
-  color: #fff;
+  color: #202020;
   font-family: "Playfair Display", serif;
-  letter-spacing: 0.1em;
 }
 
 .about p {
-  color: #fff;
+  color: #202020;
 }
 
 .blog-list-home {
@@ -355,7 +435,7 @@ abbr {
   display: grid;
   -ms-grid-columns: (minmax(25em, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
-  gap: 1em;
+  gap: 2em 2em;
 }
 
 @media (max-width: 768px) {
@@ -366,7 +446,6 @@ abbr {
 }
 
 .app-main__blog {
-  color: #fff;
   border-radius: 0.25em;
   width: clamp(50vw, 100em, 95vw);
   display: -ms-grid;
@@ -389,7 +468,8 @@ abbr {
   display: grid;
   gap: 1em;
   padding: 1em 0.5em;
-  border: 0.1em solid rgba(235, 199, 158, 0.15);
+  -webkit-box-shadow: 0.05em 0.15em 0.15em rgba(0, 0, 0, 0.4);
+          box-shadow: 0.05em 0.15em 0.15em rgba(0, 0, 0, 0.4);
 }
 
 .blog-snippet .blog-snippet__image {
@@ -402,9 +482,9 @@ abbr {
 .blog-snippet .blog-snippet__title {
   font-family: "Playfair Display", serif;
   text-transform: lowercase;
-  letter-spacing: 0.025em;
+  font-size: clamp(1.5rem, 2vw, 3rem);
   word-wrap: break-word;
-  color: #ebc79eff;
+  color: #f0544f;
 }
 
 .blog-snippet .blog-snippet__title::first-letter {
@@ -412,11 +492,11 @@ abbr {
 }
 
 .blog-snippet .blog-snippet__summary {
-  color: #fff;
+  color: #071108;
 }
 
 .blog-snippet .app-main__blog-content {
-  color: #fff;
+  color: #071108;
 }
 
 .blog-snippet__buttons {
@@ -430,14 +510,25 @@ abbr {
           justify-content: flex-start;
 }
 
+.loading-component {
+  width: 3em;
+  height: 3em;
+  border: 0.15em solid;
+  border-radius: 50%;
+  border-top: 0.15em solid;
+  border-color: #f0544f transparent;
+  -webkit-animation: spin 1.25s linear infinite;
+          animation: spin 1.25s linear infinite;
+}
+
 footer {
   display: -ms-grid;
   display: grid;
   place-items: center;
   padding: 0.5em;
-  background: #c1292eff;
+  background: #f0544f;
 }
 
 footer header {
-  color: #fff;
+  color: #202020;
 }

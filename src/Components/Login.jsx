@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
@@ -14,6 +14,11 @@ const Login = () => {
 
   const isError = useSelector((state) => state.userInfo.isError);
   const isUserLogged = useSelector((state) => state.userInfo.isLoggedIn);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main className="app-main">
       {isUserLogged ? (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewBlog } from "../Actions";
 import { useNavigate } from "react-router";
@@ -22,6 +22,10 @@ const Form = () => {
       navigate("/");
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <main className="app-main">

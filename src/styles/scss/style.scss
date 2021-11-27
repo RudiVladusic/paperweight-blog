@@ -10,7 +10,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scrollbar-width: thin;
-  // scrollbar-color: $--tart-orange $--text-black;
 }
 
 html {
@@ -35,8 +34,9 @@ pre {
 }
 
 .app-heading {
-  color: $--tart-orange;
+  color: $--byzantium;
   font-family: "Playfair Display", serif;
+  font-size: $--default-header;
 }
 
 .navigation {
@@ -63,7 +63,7 @@ pre {
 
   .navigation-logo {
     font-family: "Playfair Display", serif;
-    color: $--tart-orange;
+
     z-index: 4;
   }
 
@@ -87,7 +87,6 @@ pre {
     display: none;
     gap: 1em;
     background: $--white-bg;
-    // background: $--dark-jungle-green;
     position: fixed;
     height: 100%;
     width: 100%;
@@ -99,17 +98,6 @@ pre {
     justify-content: center;
     overflow: hidden;
     box-shadow: 0.1em 0.1em 0.5em $--periwinkle-crayola;
-
-    // &::before {
-    //   content: "";
-    //   width: 100%;
-    //   height: 100%;
-    //   position: absolute;
-    //   inset: 0;
-    //   border: 0.5em solid $--tyrian-purple;
-    //   // background: rgba(0, 0, 0, 0.5);
-    //   z-index: -2;
-    // }
 
     .navigation-mobile__link {
       text-decoration: none;
@@ -124,16 +112,15 @@ pre {
     z-index: -2;
     fill: $--byzantium;
     opacity: 0.9;
-    // transform: scale(0.8);
   }
 
   .blob-1 {
-    bottom: -10em;
+    bottom: -15em;
     left: -10em;
   }
 
   .blob-2 {
-    top: -10em;
+    top: -15em;
     right: -10em;
   }
 
@@ -168,9 +155,14 @@ pre {
   }
 }
 
+.form-header {
+  font-size: $--default-header;
+  color: $--xanadu !important;
+}
+
 .burger-open {
   :nth-child(1) {
-    transform: rotate(45deg) translate(0.2em, 1em);
+    transform: rotate(45deg) translate(0.1em, 0.95em);
   }
 
   :nth-child(2) {
@@ -193,10 +185,6 @@ textarea {
   display: block;
 }
 
-label {
-  color: $--tart-orange;
-}
-
 abbr {
   text-decoration: none;
 }
@@ -211,7 +199,7 @@ abbr {
 .form-wrapper {
   margin: auto;
   position: relative;
-  background: $--periwinkle-crayola;
+  background: transparent;
   width: $--form-width;
   border-radius: 0.5em;
   padding: 0.5em;
@@ -225,52 +213,42 @@ abbr {
   label {
     margin: 0.5em 0;
     text-transform: capitalize;
+    color: $--byzantium;
+    font-weight: 600;
   }
 
   input {
-    border-radius: 0.15em;
     border: none;
-    box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
-    background: $--bdazzled-blue;
-    color: $--text-white;
+    border-bottom: 0.1em solid rgba(0, 0, 0, 0.15);
+    color: $--text-black;
+    background: $--text-white;
     padding: 0.75em 0.5em;
     font-family: inherit;
     font-size: inherit;
     width: 100%;
     &:focus {
-      outline: 0.15em solid $--tart-orange;
+      outline: 0.15em solid $--xanadu;
     }
   }
 
   button {
     place-self: end;
-    padding: 0.5em 0.75em;
-    border: none;
-    border-radius: 0.15em;
-    outline: none;
-    cursor: pointer;
-    font-size: inherit;
-    font-family: inherit;
-    color: $--text-white;
-    background: $--tart-orange;
-    box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.4);
   }
 
   textarea {
     resize: none;
-    width: $--baseline-width;
     width: 100%;
     font-family: inherit;
-    background: $--bdazzled-blue;
+    background: $--text-white;
     outline: none;
-    border-radius: 0.15em;
-    border: 0.15em solid $--tart-orange;
+    border: none;
+    box-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.15);
     padding: 0.75em 0.5em;
-    color: $--text-white;
+    color: $--text-black;
+    font-size: $--default-text;
 
-    &::placeholder {
-      color: $--text-white;
-      opacity: 1;
+    &:focus {
+      outline: 0.15em solid $--xanadu;
     }
   }
 }
@@ -295,12 +273,12 @@ abbr {
 }
 
 .account-modal {
-  color: $--text-black;
+  color: $--text-white;
   a {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
-    text-decoration: underline $--tart-orange;
+    text-decoration: underline dotted;
     text-underline-offset: 0.3em;
   }
 }
@@ -318,55 +296,21 @@ abbr {
   }
 }
 
-// buttons stack
+.no-blogs-modal {
+  padding: 0.5em;
 
-.buttons {
-  place-self: end;
-  display: flex;
-  gap: 1em;
+  h2 {
+    font-weight: 400;
+    font-size: $--default-header;
+  }
+
+  a {
+    font-size: $--default-text;
+    color: $--byzantium;
+  }
 }
-
-.button-default {
-  outline: none;
-  background: transparent;
-  text-transform: lowercase;
-  padding: 0.5em 0.75em;
-  border-radius: 0.25em;
-  background: transparent;
-  font-size: inherit;
-  font-family: inherit;
-  cursor: pointer;
-  color: $--text-white;
-  border: 0.1em solid $--tart-orange;
-  text-decoration: none;
-}
-
-.delete {
-  background: $--tart-orange;
-}
-
-.details {
-  text-align: center;
-  background: darken($--tart-orange, 30%);
-  background: $--periwinkle-crayola;
-  border: none;
-  text-underline-offset: 0.1em;
-  color: $--text-black;
-}
-
-.submit {
-  background: $--queen-blue;
-  border: none;
-}
-
-.cancel {
-  background: transparent;
-}
-
-// buttons stack
 
 .login {
-  // border: 0.1em solid $--tart-orange;
   background: $--periwinkle-crayola;
   border-radius: 0.15em;
   padding: 0.25em 0.5em;
@@ -403,7 +347,7 @@ abbr {
 
 .blog-list-home {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
   gap: 2em 2em;
   @media (max-width: 768px) {
     grid-template-columns: repeat(1, 1fr);
@@ -420,6 +364,32 @@ abbr {
   padding: 0.5em;
 }
 
+.app-main__blog--controls {
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+}
+
+.control-container,
+.actions-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.actions-container {
+  transform: scale(1, 0);
+  width: 100%;
+  justify-content: space-between;
+  transition: transform 0.25s ease-in-out;
+  transform-origin: top;
+  flex-flow: column wrap;
+  place-items: flex-end;
+}
+
+.show-actions {
+  transform: scale(1, 1);
+}
+
 .single {
   display: grid;
   place-items: center;
@@ -431,7 +401,7 @@ abbr {
   display: grid;
   gap: 1em;
   padding: 1em 0.5em;
-  box-shadow: 0.05em 0.15em 0.15em rgba(0, 0, 0, 0.4);
+  box-shadow: 0.1em 0.2em 0.5em rgba(0, 0, 0, 0.4);
 
   .blog-snippet__image {
     width: 100%;
@@ -440,12 +410,28 @@ abbr {
     display: block;
   }
 
+  .blog-snippet__author {
+    display: flex;
+    place-items: center;
+    justify-content: flex-start;
+    gap: 1em;
+    background: lighten($--periwinkle-crayola, 7%);
+    font-size: inherit;
+    .blog-snippet__author--name {
+      color: $--byzantium;
+    }
+
+    .blog-snippet__author--time {
+      color: $--text-black;
+      font-style: italic;
+    }
+  }
+
   .blog-snippet__title {
     font-family: "Playfair Display", serif;
     text-transform: lowercase;
     font-size: $--default-header;
     word-wrap: break-word;
-    color: $--tart-orange;
     color: $--byzantium;
     &::first-letter {
       text-transform: uppercase;
@@ -461,13 +447,6 @@ abbr {
   }
 }
 
-.blog-snippet__buttons {
-  display: flex;
-  gap: 1em;
-  place-items: center;
-  justify-content: flex-start;
-}
-
 .loading-component {
   width: 3em;
   height: 3em;
@@ -477,6 +456,71 @@ abbr {
   border-color: $--tart-orange transparent;
   animation: spin 1.25s linear infinite;
 }
+
+// buttons stack
+
+.buttons {
+  place-self: end;
+  display: flex;
+  gap: 1em;
+}
+
+.button-default {
+  outline: none;
+  border: none;
+  background: transparent;
+  text-transform: lowercase;
+  padding: 0.5em 0.75em;
+  border-radius: 0.25em;
+  background: transparent;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  color: $--text-black;
+  text-decoration: none;
+  min-width: 12ch;
+  text-align: center;
+}
+
+.edit {
+  background: $--periwinkle-crayola;
+  outline: 0.15em solid $--periwinkle-crayola;
+}
+
+.delete {
+  color: $--text-black;
+  outline: 0.15em solid $--tart-orange;
+}
+
+.back {
+  place-self: flex-start;
+  outline: 0.15em solid $--black-coffee;
+}
+
+.details {
+  text-align: center;
+  background: $--periwinkle-crayola;
+  border: none;
+  text-underline-offset: 0.1em;
+  color: $--text-black;
+}
+
+.submit {
+  background: $--periwinkle-crayola;
+  outline: 0.15em solid $--periwinkle-crayola;
+}
+
+.cancel {
+  background: transparent;
+  outline: 0.15em solid $--byzantium;
+  color: $--text-black;
+}
+
+.options {
+  outline: 0.15em solid $--black-coffee;
+}
+
+// buttons stack
 
 footer {
   display: grid;

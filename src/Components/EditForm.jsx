@@ -5,19 +5,19 @@ const EditForm = ({ currentBlog, setCurrentBlog }) => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(notEditing());
+    dispatch(updateBlog(currentBlog.id, currentBlog));
+
+    setCurrentBlog({ title: "", summary: "", body: "", id: "" });
+    navigate("/");
+  };
+
   return (
     <main className="app-main">
       <div className="form-wrapper">
-        <form
-          className="login-form"
-          onSubmit={(e) => {
-            e.preventDefault();
-            dispatch(notEditing());
-            dispatch(updateBlog(currentBlog.id, currentBlog));
-            setCurrentBlog({ title: "", summary: "", body: "", id: "" });
-            navigate("/");
-          }}
-        >
+        <form className="login-form" onSubmit={handleSubmit}>
           <div className="form-wrapper__group">
             <label htmlFor="Edit">Editing {currentBlog.title}</label>
           </div>
@@ -66,7 +66,7 @@ const EditForm = ({ currentBlog, setCurrentBlog }) => {
           </div>
           <div className="form-wrapper__group buttons">
             <button className="button-default cancel">cancel</button>
-            <button className="button-default">Submit</button>
+            <button className="button-default submit">Submit</button>
           </div>
         </form>
       </div>

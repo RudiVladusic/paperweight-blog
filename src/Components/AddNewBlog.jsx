@@ -9,16 +9,18 @@ const Form = () => {
     summary: "",
     body: "",
     id: "",
+    date: "",
   });
   const navigate = useNavigate();
   const isUserLogged = useSelector((state) => state.userInfo.isLoggedIn);
   const dispatch = useDispatch();
+  const date = new Date().toLocaleString();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isUserLogged) {
       dispatch(addNewBlog(blog));
-      setBlog({ title: "", summary: "", body: "", id: "" });
+      setBlog({ title: "", summary: "", body: "", id: "", date: "" });
       navigate("/");
     }
   };
@@ -34,13 +36,20 @@ const Form = () => {
           <div className="form-wrapper">
             <form className="login-form" onSubmit={handleSubmit}>
               <div className="form-wrapper__group">
-                <label htmlFor="Create new">create new blog</label>
+                <label className="form-header" htmlFor="Create new">
+                  create new blog
+                </label>
               </div>
               <div className="form-wrapper__group">
                 <label htmlFor="Title">Title:</label>
                 <input
                   onChange={(e) => {
-                    setBlog({ ...blog, title: e.target.value, id: Date.now() });
+                    setBlog({
+                      ...blog,
+                      title: e.target.value,
+                      id: Date.now(),
+                      date: date,
+                    });
                   }}
                   type="text"
                   name="title"

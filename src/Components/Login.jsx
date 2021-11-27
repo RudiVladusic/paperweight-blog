@@ -24,7 +24,7 @@ const Login = () => {
       {isUserLogged ? (
         <Navigate to={-1} />
       ) : (
-        <div className="form-wrapper login">
+        <div className="form-wrapper">
           <form
             className="login-form"
             onSubmit={(e) => {

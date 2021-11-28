@@ -6,6 +6,8 @@ import { deleteBlog, editing } from "../Actions";
 import LoginModal from "./Presentational/LoginModal";
 import NotFound from "./Presentational/NotFound";
 import EditForm from "./EditForm";
+import { faCog, faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Blog = () => {
   const { id } = useParams();
   const [currentBlog, setCurrentBlog] = useState({});
@@ -45,16 +47,26 @@ const Blog = () => {
 
           <div className="app-main__blog--controls">
             <div className="app-main__blog--controls control-container">
-              <Link className="button-default back" to="/">
+              <Link to="/" className="button-default back">
+                <FontAwesomeIcon
+                  className="back-icon"
+                  icon={faArrowCircleLeft}
+                />{" "}
                 Go back
               </Link>
+
               <button
                 onClick={() => {
                   setShowOptions(!showOptions);
                 }}
                 className="button-default options"
               >
-                Options {showOptions ? `↑` : `↓`}
+                Options{" "}
+                {showOptions ? (
+                  <FontAwesomeIcon className="cog cog-turn" icon={faCog} />
+                ) : (
+                  <FontAwesomeIcon className="cog" icon={faCog} />
+                )}
               </button>
             </div>
 
@@ -93,8 +105,7 @@ const Blog = () => {
               </button>
             </div>
           </div>
-
-          {showModal && <LoginModal />}
+          <LoginModal showModal={showModal} />
         </article>
       ) : (
         <NotFound />

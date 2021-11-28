@@ -50,6 +50,28 @@
   }
 }
 
+@-webkit-keyframes back-icon {
+  from {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(-0.25em);
+            transform: translateX(-0.25em);
+  }
+}
+
+@keyframes back-icon {
+  from {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(-0.25em);
+            transform: translateX(-0.25em);
+  }
+}
+
 *,
 ::before,
 ::after {
@@ -79,7 +101,7 @@ pre {
   white-space: pre-wrap;
   word-wrap: break-word;
   font-size: clamp(1rem, 1vw, 2rem);
-  color: #071108;
+  color: #202020;
 }
 
 .app-heading {
@@ -129,6 +151,7 @@ pre {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  gap: 0.5em;
 }
 
 @media (max-width: 768px) {
@@ -142,7 +165,11 @@ pre {
   text-transform: lowercase;
   cursor: pointer;
   color: #202020;
-  padding: 0.5em 0.75em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  gap: 0.25em;
 }
 
 .navigation .navigation-mobile {
@@ -171,7 +198,12 @@ pre {
 .navigation .navigation-mobile .navigation-mobile__link {
   text-decoration: none;
   color: #202020;
-  font-size: clamp(1rem, 1vw, 2rem);
+  font-size: clamp(1.5rem, 2vw, 3rem);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  gap: 0.25em;
 }
 
 .navigation .blob-1,
@@ -206,7 +238,7 @@ pre {
 .navigation .burger .bar {
   width: 2.5em;
   height: 0.15em;
-  background: #071108;
+  background: #302621ff;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -333,16 +365,14 @@ abbr {
   outline: 0.15em solid #73877b;
 }
 
-.form-error-modal h2 {
+.form-error-modal p {
   font-weight: 300;
   color: #202020;
   position: relative;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
+  max-width: 100%;
 }
 
-.form-error-modal h2::before {
+.form-error-modal p::before {
   position: absolute;
   bottom: 0;
   width: 0;
@@ -354,7 +384,7 @@ abbr {
 }
 
 .account-modal {
-  color: #fff;
+  color: #202020;
 }
 
 .account-modal a {
@@ -369,14 +399,35 @@ abbr {
 .login-modal {
   text-align: center;
   color: #202020;
+  -webkit-transform: scale(1, 0);
+          transform: scale(1, 0);
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  padding: 0.5em 0.75em;
+  outline: 0.15em solid #f0544f;
+  border-radius: 0.25em;
 }
 
 .login-modal a {
-  text-decoration: none;
-  color: white;
-  background: #48639cff;
-  padding: 0.25em 0.5em;
-  border-radius: 0.15em;
+  -webkit-text-decoration: underline #f0544f 0.15em;
+          text-decoration: underline #f0544f 0.15em;
+  text-underline-offset: 0.3em;
+  display: inline-block;
+  color: #202020;
+  font-weight: 400;
+}
+
+.cog,
+.back-icon {
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.cog-turn {
+  -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
 }
 
 .no-blogs-modal {
@@ -397,6 +448,11 @@ abbr {
   background: #c6d8ff;
   border-radius: 0.15em;
   padding: 0.25em 0.5em;
+}
+
+.logged-in {
+  background: transparent;
+  outline: 0.15em solid #f0544f;
 }
 
 .app-main {
@@ -500,7 +556,8 @@ abbr {
   place-items: flex-end;
 }
 
-.show-actions {
+.show-actions,
+.show-modal {
   -webkit-transform: scale(1, 1);
           transform: scale(1, 1);
 }
@@ -564,11 +621,11 @@ abbr {
 }
 
 .blog-snippet .blog-snippet__summary {
-  color: #071108;
+  color: #202020;
 }
 
 .blog-snippet .app-main__blog-content {
-  color: #071108;
+  color: #202020;
 }
 
 .loading-component {
@@ -598,7 +655,7 @@ abbr {
   padding: 0.5em 0.75em;
   border-radius: 0.25em;
   background: transparent;
-  font-size: inherit;
+  font-size: clamp(1rem, 1vw, 2rem);
   font-family: inherit;
   cursor: pointer;
   color: #202020;
@@ -613,13 +670,19 @@ abbr {
 }
 
 .delete {
-  color: #202020;
+  color: #fff;
+  background: #f0544f;
   outline: 0.15em solid #f0544f;
 }
 
 .back {
   place-self: flex-start;
   outline: 0.15em solid #302621ff;
+}
+
+.back:hover .back-icon {
+  -webkit-animation: back-icon 0.35s ease-in-out infinite alternate;
+          animation: back-icon 0.35s ease-in-out infinite alternate;
 }
 
 .details {
@@ -643,6 +706,10 @@ abbr {
 
 .options {
   outline: 0.15em solid #302621ff;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 footer {

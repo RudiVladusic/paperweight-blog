@@ -2,12 +2,27 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logOut } from "../Actions";
 import { useState } from "react";
+import {
+  faUser,
+  faPlusCircle,
+  faBook,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const NavBar = () => {
   const isUserLogged = useSelector((state) => state.userInfo.isLoggedIn);
   const username = useSelector((state) => state.userInfo.info.username);
   const dispatch = useDispatch();
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
+
+  const handleNavBarOpen = () => {
+    setIsNavigationOpen(!isNavigationOpen);
+    document.body.classList.toggle("overflow-hidden");
+  };
+
+  const navClassName = isUserLogged
+    ? `navigation-desktop__link logged-in login`
+    : `navigation-desktop__link login`;
 
   return (
     <nav className="navigation">
@@ -16,7 +31,7 @@ const NavBar = () => {
           <header className="navigation-home">
             <Link
               onClick={() => {
-                isNavigationOpen && setIsNavigationOpen(false);
+                isNavigationOpen && handleNavBarOpen();
               }}
               to="/"
             >
@@ -26,24 +41,25 @@ const NavBar = () => {
         </div>
         <div className="navigation-desktop">
           <Link to="/about" className="navigation-desktop__link">
+            <FontAwesomeIcon icon={faBook} />
             About
           </Link>
           <Link to="/create" className="navigation-desktop__link">
+            <FontAwesomeIcon icon={faPlusCircle} />
             Create new blog
           </Link>
           <Link
             to={isUserLogged ? "/" : "/login"}
-            className="navigation-desktop__link login"
+            className={navClassName}
             onClick={() => (isUserLogged ? dispatch(logOut()) : "")}
           >
+            <FontAwesomeIcon icon={faUser} />
             {isUserLogged ? `Log out (${username})` : `Log in`}
           </Link>
         </div>
 
         <div
-          onClick={() => {
-            setIsNavigationOpen(!isNavigationOpen);
-          }}
+          onClick={handleNavBarOpen}
           className={isNavigationOpen ? `burger burger-open` : `burger`}
         >
           <div className="bar"></div>
@@ -59,20 +75,18 @@ const NavBar = () => {
         >
           <Link
             className="navigation-mobile__link"
-            onClick={() => {
-              setIsNavigationOpen(!isNavigationOpen);
-            }}
+            onClick={handleNavBarOpen}
             to="/about"
           >
+            <FontAwesomeIcon icon={faBook} />
             About
           </Link>
           <Link
             className="navigation-mobile__link"
-            onClick={() => {
-              setIsNavigationOpen(!isNavigationOpen);
-            }}
+            onClick={handleNavBarOpen}
             to="/create"
           >
+            <FontAwesomeIcon icon={faPlusCircle} />
             Create new
           </Link>
           <Link
@@ -80,9 +94,11 @@ const NavBar = () => {
             to={isUserLogged ? "/" : "/login"}
             onClick={() => {
               isUserLogged && dispatch(logOut());
-              setIsNavigationOpen(!isNavigationOpen);
+              handleNavBarOpen();
             }}
           >
+            {" "}
+            <FontAwesomeIcon icon={faUser} />
             {isUserLogged ? `Log out (${username})` : `Log in`}
           </Link>
 

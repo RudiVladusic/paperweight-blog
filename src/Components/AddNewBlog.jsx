@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewBlog } from "../Actions";
 import { useNavigate } from "react-router";
-import LoginModal from "./Presentational/LoginModal";
+import LoginPrompt from "./Presentational/LoginPrompt";
 const Form = () => {
   const [blog, setBlog] = useState({
     title: "",
@@ -91,7 +91,7 @@ const Form = () => {
             </form>
           </div>
         ) : (
-          <LoginModal />
+          <LoginPrompt />
         )}
       </section>
     </main>

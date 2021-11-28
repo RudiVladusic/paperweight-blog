@@ -1,8 +1,8 @@
 const FormErrorModal = ({ message }) => {
   return (
-    <header className="form-error-modal">
-      <h2>{message}</h2>
-    </header>
+    <div className="form-error-modal">
+      <p>{message}</p>
+    </div>
   );
 };
 

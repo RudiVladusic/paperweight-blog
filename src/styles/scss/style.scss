@@ -19,7 +19,7 @@ html {
   scroll-behavior: smooth;
   touch-action: manipulation;
   line-height: 1.5;
-  background: $--white-bg;
+  background: $--text-white;
 }
 
 pre {
@@ -30,7 +30,7 @@ pre {
   white-space: pre-wrap;
   word-wrap: break-word;
   font-size: $--default-text;
-  color: $--dark-jungle-green;
+  color: $--text-black;
 }
 
 .app-heading {
@@ -50,7 +50,7 @@ pre {
   z-index: 1;
   top: 0;
   left: 0;
-  background: $--white-bg;
+  background: $--text-white;
   box-shadow: 0 0.1em 0.25em rgba(0, 0, 0, 0.4);
 
   .navigation-wrapper {
@@ -69,7 +69,7 @@ pre {
 
   .navigation-desktop {
     display: flex;
-
+    gap: 0.5em;
     @media (max-width: 768px) {
       display: none;
     }
@@ -79,14 +79,18 @@ pre {
       text-transform: lowercase;
       cursor: pointer;
       color: $--text-black;
-      padding: 0.5em 0.75em;
+      // padding: 0.5em 0.75em;
+      // display: inline-block;
+      display: flex;
+      place-items: center;
+      gap: 0.25em;
     }
   }
 
   .navigation-mobile {
     display: none;
     gap: 1em;
-    background: $--white-bg;
+    background: $--text-white;
     position: fixed;
     height: 100%;
     width: 100%;
@@ -102,7 +106,10 @@ pre {
     .navigation-mobile__link {
       text-decoration: none;
       color: $--text-black;
-      font-size: $--default-text;
+      font-size: $--default-header;
+      display: flex;
+      place-items: center;
+      gap: 0.25em;
     }
   }
 
@@ -133,7 +140,7 @@ pre {
     .bar {
       width: 2.5em;
       height: 0.15em;
-      background: $--dark-jungle-green;
+      background: $--black-coffee;
       transition: 0.4s;
     }
 
@@ -254,11 +261,13 @@ abbr {
 }
 
 .form-error-modal {
-  h2 {
+  p {
     font-weight: 300;
     color: $--text-black;
     position: relative;
-    width: max-content;
+    // width: max-content;
+    max-width: 100%;
+    // word-wrap: break-word;
 
     &::before {
       position: absolute;
@@ -273,7 +282,7 @@ abbr {
 }
 
 .account-modal {
-  color: $--text-white;
+  color: $--text-black;
   a {
     text-decoration: none;
     color: inherit;
@@ -286,14 +295,30 @@ abbr {
 .login-modal {
   text-align: center;
   color: $--text-black;
-
+  transform: scale(1, 0);
+  transition: 0.25s ease-in-out;
+  transform-origin: top;
+  padding: 0.5em 0.75em;
+  outline: 0.15em solid $--tart-orange;
+  border-radius: 0.25em;
+  // width: 100%;
+  // place-self: start;
   a {
-    text-decoration: none;
-    color: white;
-    background: $--queen-blue;
-    padding: 0.25em 0.5em;
-    border-radius: 0.15em;
+    text-decoration: underline $--tart-orange 0.15em;
+    text-underline-offset: 0.3em;
+    display: inline-block;
+    color: $--text-black;
+    font-weight: 400;
   }
+}
+
+.cog,
+.back-icon {
+  transition: all 0.25s ease-in-out;
+}
+
+.cog-turn {
+  transform: rotate(20deg);
 }
 
 .no-blogs-modal {
@@ -314,6 +339,12 @@ abbr {
   background: $--periwinkle-crayola;
   border-radius: 0.15em;
   padding: 0.25em 0.5em;
+}
+
+.logged-in {
+  background: transparent;
+  outline: 0.15em solid $--tart-orange;
+  // color: $--text-white !important;
 }
 
 .app-main {
@@ -386,7 +417,8 @@ abbr {
   place-items: flex-end;
 }
 
-.show-actions {
+.show-actions,
+.show-modal {
   transform: scale(1, 1);
 }
 
@@ -439,11 +471,11 @@ abbr {
   }
 
   .blog-snippet__summary {
-    color: $--dark-jungle-green;
+    color: $--text-black;
   }
 
   .app-main__blog-content {
-    color: $--dark-jungle-green;
+    color: $--text-black;
   }
 }
 
@@ -473,7 +505,7 @@ abbr {
   padding: 0.5em 0.75em;
   border-radius: 0.25em;
   background: transparent;
-  font-size: inherit;
+  font-size: $--default-text;
   font-family: inherit;
   cursor: pointer;
   color: $--text-black;
@@ -488,13 +520,20 @@ abbr {
 }
 
 .delete {
-  color: $--text-black;
+  color: $--text-white;
+  background: $--tart-orange;
   outline: 0.15em solid $--tart-orange;
 }
 
 .back {
   place-self: flex-start;
   outline: 0.15em solid $--black-coffee;
+
+  &:hover {
+    .back-icon {
+      animation: back-icon 0.35s ease-in-out infinite alternate;
+    }
+  }
 }
 
 .details {
@@ -521,6 +560,14 @@ abbr {
 }
 
 // buttons stack
+
+// helper classes
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+// helper classes
 
 footer {
   display: grid;

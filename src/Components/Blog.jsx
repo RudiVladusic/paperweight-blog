@@ -6,7 +6,12 @@ import { deleteBlog, editing } from "../Actions";
 import LoginModal from "./Presentational/LoginModal";
 import NotFound from "./Presentational/NotFound";
 import EditForm from "./EditForm";
-import { faCog, faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCog,
+  faArrowCircleLeft,
+  faWindowClose,
+  faPencilAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Blog = () => {
   const { id } = useParams();
@@ -84,11 +89,20 @@ const Blog = () => {
                     dispatch(editing());
                     setCurrentBlog({ ...blogItem });
                     setShowModal(false);
+                  } else {
+                    setShowModal(true);
                   }
-                  setShowModal(true);
                 }}
               >
-                <abbr title={`Edit blog "${blogItem.title}"`}>edit</abbr>
+                <abbr title={`Edit blog "${blogItem.title}"`}>edit</abbr>{" "}
+                <FontAwesomeIcon
+                  className={
+                    showOptions
+                      ? `blog-controls-icon show`
+                      : `blog-controls-icon`
+                  }
+                  icon={faPencilAlt}
+                />
               </button>
               <button
                 className="button-default delete"
@@ -97,15 +111,26 @@ const Blog = () => {
                     dispatch(deleteBlog(Number(id)));
                     navigate("/");
                     setShowModal(false);
+                  } else {
+                    setShowModal(true);
                   }
-                  setShowModal(true);
                 }}
               >
-                <abbr title={`Delete blog "${blogItem.title}"`}>delete</abbr>
+                <abbr title={`Delete blog "${blogItem.title}"`}>delete</abbr>{" "}
+                <FontAwesomeIcon
+                  className={
+                    showOptions
+                      ? `blog-controls-icon show`
+                      : `blog-controls-icon`
+                  }
+                  icon={faWindowClose}
+                />
               </button>
             </div>
           </div>
-          <LoginModal showModal={showModal} />
+          <div className={showModal ? `login-modal show-modal` : `login-modal`}>
+            <LoginModal />
+          </div>
         </article>
       ) : (
         <NotFound />

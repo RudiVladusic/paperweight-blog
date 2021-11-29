@@ -6,12 +6,10 @@ const About = () => {
   }, []);
   return (
     <main className="app-main about">
-      <article>
-        <header>
-          <h2>Paperweight</h2>
-        </header>
+      <header>
+        <h2>Paperweight</h2>
         <p>Where you write anything...</p>
-      </article>
+      </header>
     </main>
   );
 };

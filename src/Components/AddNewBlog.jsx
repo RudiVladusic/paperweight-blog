@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewBlog } from "../Actions";
 import { useNavigate } from "react-router";
-import LoginPrompt from "./Presentational/LoginPrompt";
+import LoginModal from "./Presentational/LoginModal";
 const Form = () => {
   const [blog, setBlog] = useState({
     title: "",
@@ -86,12 +86,16 @@ const Form = () => {
                   value={blog.body}
                 ></textarea>
               </div>
-
-              <button className="button-default submit">Submit</button>
+              <div className="form-wrapper__group buttons">
+                <button className="button-default cancel">cancel</button>
+                <button className="button-default submit">add new</button>
+              </div>
             </form>
           </div>
         ) : (
-          <LoginPrompt />
+          <div className="login-modal show-modal">
+            <LoginModal />
+          </div>
         )}
       </section>
     </main>

@@ -68,12 +68,14 @@ const Login = () => {
               />
             </div>
 
-            <button type="submit">Login</button>
+            <button type="submit" className="button-default submit">
+              Login
+            </button>
           </form>
 
           <div className="account-modal">
             <p>
-              Don't have a account? <Link to="/register">Sign up</Link>
+              Don't have an account? <Link to="/register">Sign up</Link>
             </p>
           </div>
         </div>

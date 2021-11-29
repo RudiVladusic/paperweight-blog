@@ -9,7 +9,6 @@ const EditForm = ({ currentBlog, setCurrentBlog }) => {
     e.preventDefault();
     dispatch(notEditing());
     dispatch(updateBlog(currentBlog.id, currentBlog));
-
     setCurrentBlog({ title: "", summary: "", body: "", id: "" });
     navigate("/");
   };
@@ -65,8 +64,18 @@ const EditForm = ({ currentBlog, setCurrentBlog }) => {
             ></textarea>
           </div>
           <div className="form-wrapper__group buttons">
-            <button className="button-default cancel">cancel</button>
-            <button className="button-default submit">Submit</button>
+            <button
+              type="button"
+              onClick={() => {
+                dispatch(notEditing());
+              }}
+              className="button-default cancel"
+            >
+              cancel
+            </button>
+            <button type="submit" className="button-default submit">
+              Submit
+            </button>
           </div>
         </form>
       </div>

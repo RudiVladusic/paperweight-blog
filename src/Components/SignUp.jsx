@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../Actions";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import FormErrorModal from "./Presentational/FormErrorModal";
+
 const SignUp = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [userRegister, setUserRegister] = useState({ username: "" });
@@ -111,11 +116,13 @@ const SignUp = () => {
             />
           </div>
 
-          <button type="submit">Submit</button>
+          <button type="submit" className="button-default submit">
+            Register
+          </button>
         </form>
         <div className="account-modal">
           <p>
-            Already have a account? <Link to="/login">Log in</Link>
+            Already have an account? <Link to="/login">Log in</Link>
           </p>
         </div>
       </div>
